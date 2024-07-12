@@ -5,6 +5,9 @@ class RestaurantController:
     def __init__(self, db_name):
         self.db_manager = DatabaseManager(db_name)
         self.menu = Menu(1, self.db_manager)
+        self.branches = []
+
+
 
     def create_menu_item(self, id, price, available, name, description, allergens, menu_id, category):
         menu_item = MenuItem(id, price, available, name, description, allergens, menu_id, category, self.db_manager)
@@ -441,11 +444,15 @@ class RestaurantController:
 
         #RESIT
     
+    def get_branches(self):
+        # Return the list of branches
+        return self.branches
+
     def add_branch(self, location, name):
-        self.model.add_branch(location, name)
+        # Add a new branch to the list
+        branch_id = len(self.branches) + 1
+        self.branches.append((branch_id, name, location))
 
     def remove_branch(self, branch_id):
-        self.model.remove_branch(branch_id)
-
-    def get_branches(self):
-        return self.model.get_branches()
+        # Remove a branch by ID
+        self.branches = [branch for branch in self.branches if branch[0] != branch_id]
