@@ -1,4 +1,0 @@
-to start the software if you'd like to login as an admin which can do everything on the system 
-username: admin
-password: adminpass
-after that you will have access to all the buttuns for example if you'd like to edit the menu you could use the menu managemnet button to do CRUD operations on the menu same with all the other buttons on the system
